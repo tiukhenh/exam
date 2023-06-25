@@ -1,0 +1,40 @@
+{
+  "name": "examcypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
+    "postreport": "npm run combine:reports",
+    "create:html:report": "npm run merge:results && marge --reportDir TestReport cypress-combined-report.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "^10.0.1",
+    "cypress": "^12.15.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-mochawesome-reporter": "^3.5.1",
+    "cypress-multi-reporters": "^1.6.3",
+    "mocha-junit-reporter": "^2.2.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "esbuild": "^0.18.8",
+    "typescript": "^5.1.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "jsonFolder": "cypress/reports/cucumber-json",
+    "reporter": "cucumberjs-json",
+    "reporterOptions": {
+      "jsonDir": "cypress/reports/cucumber-json",
+      "reportPath": "cypress/reports/cucumber-report.html"
+    }
+  }
+}
